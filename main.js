@@ -17,9 +17,8 @@ function createWindow () {
   });
 
 
-  mainWindow.once('ready-to-show', () => {
-    autoUpdater.checkForUpdatesAndNotify();
-  });
+  console.log("Checking for updates in main")
+  autoUpdater.checkForUpdatesAndNotify();
 }
 
 app.on('ready', () => {
