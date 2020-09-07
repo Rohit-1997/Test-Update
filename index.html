@@ -33,7 +33,7 @@
             const message = document.getElementById('message');
             const restartButton = document.getElementById('restart-button');
 
-          
+            console.log('Inside renderer')
             ipcRenderer.send('app_version');
             ipcRenderer.on('app_version', (event, arg) => {
                 ipcRenderer.removeAllListeners('app_version');
