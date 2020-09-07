@@ -49,11 +49,11 @@ ipcMain.on('restart_app', () => {
 });
 
 
-autoUpdater.on('update-available', () => {
-    mainWindow.webContents.send('update_available');
+autoUpdater.on('update-available', (event) => {
+    event.sender.send('update_available', 'Update event sent');
 });
 
 
-autoUpdater.on('update-downloaded', () => {
-    mainWindow.webContents.send('update_downloaded');
+autoUpdater.on('update-downloaded', (event) => {
+    event.sender.send('update_downloaded', 'download-update event');
 });
