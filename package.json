@@ -1,12 +1,12 @@
 {
   "name": "testelectronupdate",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "electron .",    
-    "build": "electron-builder build --win --publish never",
-    "deploy": "electron-builder build --win --publish always",
+    "start": "electron .",
+    "build": "electron-builder build  --mac --win --publish never",
+    "deploy": "electron-builder build --mac --win --publish always",
     "dist": "electron-builder"
   },
   "author": "",
