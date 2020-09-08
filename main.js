@@ -17,8 +17,14 @@ function createWindow () {
   });
 
 
-  console.log("Checking for updates in main")
-  autoUpdater.checkForUpdatesAndNotify();
+//   console.log("Checking for updates in main")
+  
+  
+
+  mainWindow.webContents.on('did-finish-load', () => {
+    mainWindow.webContents.send('Test event', 'hey there')
+    autoUpdater.checkForUpdatesAndNotify();
+  })
 }
 
 app.on('ready', () => {
@@ -48,11 +54,20 @@ ipcMain.on('restart_app', () => {
 });
 
 
-autoUpdater.on('update-available', (event) => {
-    event.sender.send('update_available', 'Update event sent');
+autoUpdater.on('checking-for-update', () => {
+    console.log("Checking for auto update")
+})
+
+autoUpdater.on('update-available', () => {
+    mainWindow.webContents.send('Test event', 'Inside update available')
 });
 
 
 autoUpdater.on('update-downloaded', (event) => {
-    event.sender.send('update_downloaded', 'download-update event');
+    mainWindow.webContents.send('Test event', 'Inside update downloaded')
 });
+
+
+autoUpdater.on('error', (info) => {
+    console.log("The error inauto update: ",info)
+})

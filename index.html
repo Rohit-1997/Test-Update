@@ -39,6 +39,10 @@
                 ipcRenderer.removeAllListeners('app_version');
                 version.innerText = 'Version ' + arg.version;
             });
+            console.log("Checking the event")
+            ipcRenderer.on('Test event', (event, arg) => {
+              console.log("Checking the arg message: ", arg)
+            })
 
             ipcRenderer.on('update_available', (event,arg) => {
                 console.log("The update got from the main: ", arg)
